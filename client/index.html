@@ -248,6 +248,20 @@
             display: flex; align-items: center; justify-content: center;
         }
 
+        .cart-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: 0.85rem; font-weight: 500; }
+        .cart-item-meta { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.15rem; }
+        .cart-item-remove {
+            background: none; border: none; color: var(--text-muted);
+            cursor: pointer; font-size: 1rem; padding: 0.25rem;
+            transition: color 0.2s;
+        }
+        .cart-item-remove:hover { color: var(--error); }
+
         /* ── Toast ───────────────────────────────────── */
         .toast-container {
             position: fixed; bottom: 1.5rem; right: 1.5rem;
@@ -373,6 +387,26 @@
         </div>
     </div>
 
+        <!-- ════════ CART SIDEBAR ════════ -->
+    <div id="cartOverlay" class="modal-overlay hidden" onclick="if(event.target===this)closeCart()">
+        <div class="modal" style="max-width:400px; max-height:80vh; display:flex; flex-direction:column;">
+            <div class="modal-header">
+                <h3>Your Cart</h3>
+                <button class="modal-close" onclick="closeCart()">×</button>
+            </div>
+            <div id="cartItems" style="flex:1; overflow-y:auto; margin-bottom:1rem;">
+                <div class="empty-state"><p>Your cart is empty</p></div>
+            </div>
+            <div id="cartFooter" class="hidden">
+                <div style="display:flex; justify-content:space-between; padding:0.75rem 0; border-top:1px solid var(--border); font-size:0.9rem;">
+                    <span>Total</span>
+                    <strong id="cartTotal">$0.00</strong>
+                </div>
+                <button class="btn btn-accent" style="width:100%" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
@@ -388,7 +422,8 @@
         userId: localStorage.getItem("userId") ? parseInt(localStorage.getItem("userId")) : null,
         authMode: "login",
         products: [],
-        editingProductId: null,  // null = creating, number = editing
+        editingProductId: null,
+        cart: null,
     };
 
     // ─── API LAYER ────────────────────────────────────────────
@@ -493,6 +528,15 @@
             renderProducts();
         } catch (err) {
             console.error("Failed to load products:", err);
+        }
+    }
+
+    async function loadCart() {
+        try {
+            state.cart = await api("/cart");
+            updateCartBadge();
+        } catch (err) {
+            console.log("Cart not loaded:", err);
         }
     }
 
@@ -603,15 +647,96 @@
         }
     }
 
-    // Placeholder for Slice 3
-    function addToCart(productId) {
-        showToast("Cart coming in Slice 3", "success");
+    // Replace these two functions:
+
+    async function addToCart(productId) {
+        try {
+            const cart = await api("/cart", "POST", { product_id: productId, quantity: 1 });
+            state.cart = cart;
+            renderCart();
+            updateCartBadge();
+            showToast("Added to cart", "success");
+        } catch (err) {
+            showToast(err.message, "error");
+        }
     }
 
     function toggleCart() {
-        showToast("Cart coming in Slice 3", "success");
+        const overlay = document.getElementById("cartOverlay");
+        if (overlay.classList.contains("hidden")) {
+            openCart();
+        } else {
+            closeCart();
+        }
     }
 
+
+    async function openCart() {
+        try {
+            const cart = await api("/cart");
+            state.cart = cart;
+            renderCart();
+            document.getElementById("cartOverlay").classList.remove("hidden");
+        } catch (err) {
+            showToast(err.message, "error");
+        }
+    }
+
+    function closeCart() {
+        document.getElementById("cartOverlay").classList.add("hidden");
+    }
+
+    function renderCart() {
+        const container = document.getElementById("cartItems");
+        const footer = document.getElementById("cartFooter");
+        const cart = state.cart;
+
+        if (!cart || cart.items.length === 0) {
+            container.innerHTML = '<div class="empty-state"><p>Your cart is empty</p></div>';
+            footer.classList.add("hidden");
+            return;
+        }
+
+        container.innerHTML = cart.items.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${escapeHtml(item.product_name)}</div>
+                    <div class="cart-item-meta">$${item.product_price.toFixed(2)} × ${item.quantity} = $${item.subtotal.toFixed(2)}</div>
+                </div>
+                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">×</button>
+            </div>
+        `).join("");
+
+        document.getElementById("cartTotal").textContent = `$${cart.total_price.toFixed(2)}`;
+        footer.classList.remove("hidden");
+    }
+
+    async function removeFromCart(itemId) {
+        try {
+            const cart = await api(`/cart/${itemId}`, "DELETE");
+            state.cart = cart;
+            renderCart();
+            updateCartBadge();
+            showToast("Removed from cart", "success");
+        } catch (err) {
+            showToast(err.message, "error");
+        }
+    }
+
+    function updateCartBadge() {
+        const badge = document.getElementById("cartCount");
+        const count = state.cart ? state.cart.item_count : 0;
+        badge.textContent = count;
+        if (count > 0) {
+            badge.classList.remove("hidden");
+        } else {
+            badge.classList.add("hidden");
+        }
+    }
+
+    function checkout() {
+        showToast("Checkout coming in Slice 4", "success");
+    }
     // ─── PAGE SWITCHING ───────────────────────────────────────
     function showAuth() {
         document.getElementById("authPage").classList.remove("hidden");
@@ -629,6 +754,7 @@
         document.getElementById("logoutBtn").classList.remove("hidden");
         document.getElementById("navUsername").textContent = state.username;
         loadProducts();
+        loadCart();
     }
 
     // ─── UTILITIES ────────────────────────────────────────────

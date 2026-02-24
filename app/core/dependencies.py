@@ -11,7 +11,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> int:
         raise HTTPException(
             status_code = status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or expired token",
-            header={"WWW_Authenticate": "Bearer"},
+            headers={"WWW_Authenticate": "Bearer"},
         )
 
     user_id = payload.get("user_id")
