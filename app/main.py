@@ -2,12 +2,15 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from app.core.database import engine, Base
 from app.modules.auth.router import router as auth_router
+from app.modules.products.router import router as product_router
+from app.modules.products.models import Product  # ensures table is created
 
 app = FastAPI(title="E-Commerce API")
 
 Base.metadata.create_all(bind=engine)
 
 app.include_router(auth_router)
+app.include_router(product_router)
 
 
 @app.get("/", response_class=HTMLResponse)

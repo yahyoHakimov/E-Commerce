@@ -23,8 +23,8 @@
             --success: #5a8a6a;
             --error: #c45d3e;
             --radius: 6px;
-            --shadow: 0 1px 3px rgba(45, 42, 38, 0.06), 0 4px 12px rgba(45, 42, 38, 0.04);
-            --shadow-lg: 0 4px 16px rgba(45, 42, 38, 0.08), 0 12px 40px rgba(45, 42, 38, 0.06);
+            --shadow: 0 1px 3px rgba(45,42,38,0.06), 0 4px 12px rgba(45,42,38,0.04);
+            --shadow-lg: 0 4px 16px rgba(45,42,38,0.08), 0 12px 40px rgba(45,42,38,0.06);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,7 +52,6 @@
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 0.08em;
-            color: var(--text);
         }
 
         .nav-right {
@@ -61,15 +60,8 @@
             gap: 1rem;
         }
 
-        .nav-user {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .nav-user strong {
-            color: var(--text);
-            font-weight: 500;
-        }
+        .nav-user strong { font-weight: 500; }
+        .nav-user { font-size: 0.85rem; color: var(--text-secondary); }
 
         /* ── Buttons ─────────────────────────────────── */
         .btn {
@@ -87,40 +79,16 @@
             letter-spacing: 0.02em;
         }
 
-        .btn-primary {
-            background: var(--text);
-            color: var(--bg);
-        }
-
+        .btn-primary { background: var(--text); color: var(--bg); }
         .btn-primary:hover { opacity: 0.85; }
-
-        .btn-accent {
-            background: var(--accent);
-            color: #fff;
-        }
-
+        .btn-accent { background: var(--accent); color: #fff; }
         .btn-accent:hover { background: var(--accent-hover); }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--text);
-            color: var(--text);
-        }
-
-        .btn-sm {
-            padding: 0.4rem 0.9rem;
-            font-size: 0.8rem;
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+        .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+        .btn-danger { background: transparent; color: var(--error); border: 1px solid rgba(196,93,62,0.3); }
+        .btn-danger:hover { background: rgba(196,93,62,0.05); }
+        .btn-sm { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         /* ── Auth Page ───────────────────────────────── */
         .auth-container {
@@ -131,28 +99,11 @@
             padding: 2rem;
         }
 
-        .auth-card {
-            width: 100%;
-            max-width: 380px;
-            animation: fadeUp 0.5s ease-out;
-        }
+        .auth-card { width: 100%; max-width: 380px; animation: fadeUp 0.5s ease-out; }
 
-        .auth-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .auth-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .auth-header p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
+        .auth-header { text-align: center; margin-bottom: 2rem; }
+        .auth-header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .auth-header p { font-size: 0.9rem; color: var(--text-secondary); }
 
         .auth-form {
             background: var(--bg-card);
@@ -162,247 +113,174 @@
             box-shadow: var(--shadow);
         }
 
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
+        .auth-tabs { display: flex; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
 
         .auth-tab {
-            flex: 1;
-            padding: 0.6rem 0;
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s;
+            flex: 1; padding: 0.6rem 0; background: none; border: none;
+            border-bottom: 2px solid transparent; font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+            cursor: pointer; transition: all 0.2s;
         }
 
-        .auth-tab.active {
-            color: var(--text);
-            border-bottom-color: var(--text);
-        }
+        .auth-tab.active { color: var(--text); border-bottom-color: var(--text); }
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
+        .form-group { margin-bottom: 1rem; }
         .form-group label {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 0.35rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
+            display: block; font-size: 0.78rem; font-weight: 500;
+            color: var(--text-secondary); margin-bottom: 0.35rem;
+            letter-spacing: 0.03em; text-transform: uppercase;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 0.65rem 0.8rem;
-            background: var(--bg-input);
-            border: 1px solid transparent;
-            border-radius: var(--radius);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text);
-            outline: none;
-            transition: all 0.2s;
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 0.65rem 0.8rem; background: var(--bg-input);
+            border: 1px solid transparent; border-radius: var(--radius);
+            font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+            color: var(--text); outline: none; transition: all 0.2s;
         }
 
-        .form-group input:focus {
-            border-color: var(--border-focus);
-            background: #fff;
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--border-focus); background: #fff;
         }
 
-        .form-group input::placeholder {
-            color: var(--text-muted);
-        }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+        .form-group textarea { resize: vertical; min-height: 70px; }
 
-        .auth-form .btn {
-            width: 100%;
-            margin-top: 0.5rem;
-            padding: 0.7rem;
-        }
+        .auth-form .btn { width: 100%; margin-top: 0.5rem; padding: 0.7rem; }
 
         .auth-footer {
-            text-align: center;
-            margin-top: 1.25rem;
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            text-align: center; margin-top: 1.25rem;
+            font-size: 0.82rem; color: var(--text-muted);
         }
 
-        /* ── Main Layout (after login) ───────────────── */
-        .main-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 2.5rem;
-        }
+        .auth-footer a { color: var(--accent); text-decoration: none; }
+
+        /* ── Main Layout ─────────────────────────────── */
+        .main-container { max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; }
 
         .page-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 2rem;
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600;
         }
+
+        /* ── Product Form Modal ──────────────────────── */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(45, 42, 38, 0.3);
+            backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 100;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .modal {
+            width: 100%; max-width: 440px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            animation: fadeUp 0.3s ease-out;
+        }
+
+        .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600;
+        }
+
+        .modal-close {
+            width: 32px; height: 32px; display: flex; align-items: center;
+            justify-content: center; background: none; border: 1px solid var(--border);
+            border-radius: var(--radius); cursor: pointer; font-size: 1.1rem;
+            color: var(--text-muted); transition: all 0.2s;
+        }
+
+        .modal-close:hover { border-color: var(--text); color: var(--text); }
+
+        .form-row { display: flex; gap: 0.75rem; }
+        .form-row .form-group { flex: 1; }
 
         /* ── Products Grid ───────────────────────────── */
         .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.25rem;
         }
 
         .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.25rem;
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 1.25rem; box-shadow: var(--shadow);
+            transition: all 0.2s; position: relative;
         }
 
-        .product-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-        }
+        .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 
         .product-img-placeholder {
-            width: 100%;
-            aspect-ratio: 4/3;
-            background: var(--bg-input);
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--text-muted);
-        }
-
-        .product-name {
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .product-price {
+            width: 100%; aspect-ratio: 4/3; background: var(--bg-input);
+            border-radius: var(--radius); margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: center;
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
+            font-size: 2.5rem; font-weight: 600; color: var(--text-muted);
         }
 
-        .product-stock {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-        }
+        .product-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .product-desc { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem; line-height: 1.4; }
+        .product-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.25rem; }
+        .product-stock { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .product-stock.out { color: var(--error); }
 
-        /* ── Cart Sidebar ────────────────────────────── */
-        .cart-badge {
-            position: relative;
-            cursor: pointer;
-        }
+        .product-actions { display: flex; gap: 0.5rem; }
+        .product-actions .btn { flex: 1; }
 
+        /* ── Cart Badge ──────────────────────────────── */
+        .cart-badge { position: relative; cursor: pointer; }
         .cart-count {
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 600;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -6px; right: -8px;
+            background: var(--accent); color: #fff;
+            font-size: 0.65rem; font-weight: 600;
+            width: 18px; height: 18px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
         }
 
         /* ── Toast ───────────────────────────────────── */
         .toast-container {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            z-index: 200;
+            position: fixed; bottom: 1.5rem; right: 1.5rem;
+            display: flex; flex-direction: column; gap: 0.5rem; z-index: 200;
         }
 
         .toast {
-            padding: 0.7rem 1rem;
-            border-radius: var(--radius);
-            font-size: 0.82rem;
-            font-weight: 500;
+            padding: 0.7rem 1rem; border-radius: var(--radius);
+            font-size: 0.82rem; font-weight: 500; box-shadow: var(--shadow-lg);
             animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-in 2.7s forwards;
             max-width: 320px;
-            box-shadow: var(--shadow-lg);
         }
 
-        .toast.error {
-            background: #fff;
-            border: 1px solid rgba(196, 93, 62, 0.2);
-            color: var(--error);
-        }
+        .toast.error { background: #fff; border: 1px solid rgba(196,93,62,0.2); color: var(--error); }
+        .toast.success { background: #fff; border: 1px solid rgba(90,138,106,0.2); color: var(--success); }
 
-        .toast.success {
-            background: #fff;
-            border: 1px solid rgba(90, 138, 106, 0.2);
-            color: var(--success);
-        }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+        .empty-state p { font-size: 0.9rem; margin-bottom: 1rem; }
 
-        /* ── Empty State ─────────────────────────────── */
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-muted);
-        }
-
-        .empty-state p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* ── Utilities ───────────────────────────────── */
         .hidden { display: none !important; }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; transform: translateY(4px); }
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(4px); } }
     </style>
 </head>
 
 <body>
 
-    <!-- NAV — always visible -->
     <nav>
         <div class="logo">MARKT</div>
         <div class="nav-right">
-            <!-- Shown when logged in -->
             <div class="nav-user hidden" id="navUser">
                 <strong id="navUsername"></strong>
             </div>
@@ -430,7 +308,6 @@
                     <button class="auth-tab active" onclick="switchTab('login')">Sign In</button>
                     <button class="auth-tab" onclick="switchTab('register')">Create Account</button>
                 </div>
-
                 <div class="form-group">
                     <label for="authUsername">Username</label>
                     <input type="text" id="authUsername" placeholder="Enter username">
@@ -446,98 +323,93 @@
                 <button class="btn btn-primary" id="authSubmitBtn" onclick="submitAuth()">Sign In</button>
             </div>
             <div class="auth-footer" id="authFooter">
-                Don't have an account? <a href="#" onclick="switchTab('register'); return false;" style="color: var(--accent); text-decoration: none;">Create one</a>
+                Don't have an account? <a href="#" onclick="switchTab('register'); return false;">Create one</a>
             </div>
         </div>
     </div>
 
-    <!-- ════════ MAIN APP (after login) ════════ -->
+    <!-- ════════ MAIN APP ════════ -->
     <div id="appPage" class="hidden">
         <div class="main-container">
 
             <div class="page-header">
                 <h2>Products</h2>
+                <button class="btn btn-primary btn-sm" onclick="openProductModal()">+ New Product</button>
             </div>
 
             <div class="products-grid" id="productsGrid">
-                <div class="empty-state">
-                    <p>No products yet. Check back soon.</p>
-                </div>
+                <div class="empty-state"><p>No products yet.</p></div>
             </div>
 
         </div>
     </div>
 
-    <!-- Toast container -->
+    <!-- ════════ PRODUCT MODAL ════════ -->
+    <div id="productModal" class="modal-overlay hidden" onclick="if(event.target===this)closeProductModal()">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">New Product</h3>
+                <button class="modal-close" onclick="closeProductModal()">×</button>
+            </div>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" id="productName" placeholder="e.g. Wireless Headphones">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="productDesc" placeholder="Brief product description..."></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="productPrice" placeholder="0.00" step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Stock</label>
+                    <input type="number" id="productStock" placeholder="0" min="0">
+                </div>
+            </div>
+            <button class="btn btn-accent" style="width:100%" id="productSubmitBtn" onclick="submitProduct()">Create Product</button>
+        </div>
+    </div>
+
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
     /*
     ═══════════════════════════════════════════════════════════════
-    CLIENT ARCHITECTURE — Same patterns as polling app
-    
-        1. CONFIG    — API base URL
-        2. STATE     — Single source of truth
-        3. API       — HTTP fetch wrapper (replaces WebSocket send)
-        4. AUTH      — Login/register logic
-        5. RENDERER  — UI updates
-        6. UTILITIES — Toast, helpers
+    CLIENT — Auth + Products CRUD
     ═══════════════════════════════════════════════════════════════
     */
 
-
-    // ─── 1. CONFIG ────────────────────────────────────────────
-    const API = "";  // Same origin — no prefix needed
-
-
-    // ─── 2. STATE ─────────────────────────────────────────────
     const state = {
         token: localStorage.getItem("token") || null,
         username: localStorage.getItem("username") || null,
+        userId: localStorage.getItem("userId") ? parseInt(localStorage.getItem("userId")) : null,
         authMode: "login",
         products: [],
-        cart: [],
+        editingProductId: null,  // null = creating, number = editing
     };
 
-
-    // ─── 3. API LAYER ────────────────────────────────────────
-    /*
-        In polling app we had: send(MSG.VOTE, payload) over WebSocket
-        In HTTP we have: api("/products", "GET") over fetch
-
-        Same idea — wrapper function that handles:
-        - Adding auth header
-        - Parsing JSON response
-        - Error handling
-    */
-
+    // ─── API LAYER ────────────────────────────────────────────
     async function api(path, method = "GET", body = null) {
         const headers = { "Content-Type": "application/json" };
-
-        // Attach JWT token if we have one
-        if (state.token) {
-            headers["Authorization"] = `Bearer ${state.token}`;
-        }
+        if (state.token) headers["Authorization"] = `Bearer ${state.token}`;
 
         const options = { method, headers };
-        if (body) {
-            options.body = JSON.stringify(body);
-        }
+        if (body) options.body = JSON.stringify(body);
 
-        const response = await fetch(`${API}${path}`, options);
+        const response = await fetch(path, options);
+
+        // Handle 204 No Content (delete)
+        if (response.status === 204) return null;
+
         const data = await response.json();
-
-        if (!response.ok) {
-            // FastAPI returns {"detail": "error message"} on errors
-            throw new Error(data.detail || "Request failed");
-        }
-
+        if (!response.ok) throw new Error(data.detail || "Request failed");
         return data;
     }
 
-
-    // ─── 4. AUTH ─────────────────────────────────────────────
-
+    // ─── AUTH ─────────────────────────────────────────────────
     function switchTab(mode) {
         state.authMode = mode;
         const tabs = document.querySelectorAll(".auth-tab");
@@ -551,12 +423,12 @@
             tabs[1].classList.add("active");
             emailGroup.classList.remove("hidden");
             btn.textContent = "Create Account";
-            footer.innerHTML = 'Already have an account? <a href="#" onclick="switchTab(\'login\'); return false;" style="color: var(--accent); text-decoration: none;">Sign in</a>';
+            footer.innerHTML = 'Already have an account? <a href="#" onclick="switchTab(\'login\'); return false;">Sign in</a>';
         } else {
             tabs[0].classList.add("active");
             emailGroup.classList.add("hidden");
             btn.textContent = "Sign In";
-            footer.innerHTML = 'Don\'t have an account? <a href="#" onclick="switchTab(\'register\'); return false;" style="color: var(--accent); text-decoration: none;">Create one</a>';
+            footer.innerHTML = 'Don\'t have an account? <a href="#" onclick="switchTab(\'register\'); return false;">Create one</a>';
         }
     }
 
@@ -564,21 +436,14 @@
         const username = document.getElementById("authUsername").value.trim();
         const password = document.getElementById("authPassword").value;
         const email = document.getElementById("authEmail").value.trim();
+        // REMOVED: payload line was here — data doesn't exist yet
 
-        // Validation
-        if (!username || !password) {
-            showToast("Username and password are required", "error");
-            return;
-        }
-        if (state.authMode === "register" && !email) {
-            showToast("Email is required", "error");
-            return;
-        }
+        if (!username || !password) { showToast("Username and password required", "error"); return; }
+        if (state.authMode === "register" && !email) { showToast("Email required", "error"); return; }
 
         try {
             const btn = document.getElementById("authSubmitBtn");
             btn.disabled = true;
-            btn.textContent = "Please wait...";
 
             let data;
             if (state.authMode === "register") {
@@ -587,41 +452,167 @@
                 data = await api("/auth/login", "POST", { username, password });
             }
 
-            // Save auth state
+            // Decode JWT to get user_id — MUST be after data is assigned
+            const payload = JSON.parse(atob(data.access_token.split('.')[1]));
+
             state.token = data.access_token;
             state.username = username;
+            state.userId = payload.user_id;
             localStorage.setItem("token", data.access_token);
             localStorage.setItem("username", username);
+            localStorage.setItem("userId", payload.user_id);
 
             showToast(state.authMode === "register" ? "Account created!" : "Welcome back!", "success");
             showApp();
-
         } catch (err) {
             showToast(err.message, "error");
         } finally {
-            const btn = document.getElementById("authSubmitBtn");
-            btn.disabled = false;
-            btn.textContent = state.authMode === "register" ? "Create Account" : "Sign In";
+            document.getElementById("authSubmitBtn").disabled = false;
         }
     }
 
     function logout() {
         state.token = null;
         state.username = null;
+        state.userId = null;           // ← null, not payload.user_id
         localStorage.removeItem("token");
         localStorage.removeItem("username");
+        localStorage.removeItem("userId");
         showAuth();
         showToast("Logged out", "success");
     }
 
-    // Allow Enter key to submit
-    document.getElementById("authPassword").addEventListener("keydown", (e) => {
+    document.getElementById("authPassword").addEventListener("keydown", e => {
         if (e.key === "Enter") submitAuth();
     });
 
+    // ─── PRODUCTS ─────────────────────────────────────────────
+    async function loadProducts() {
+        try {
+            state.products = await api("/products");
+            renderProducts();
+        } catch (err) {
+            console.error("Failed to load products:", err);
+        }
+    }
 
-    // ─── 5. RENDERER ─────────────────────────────────────────
+    function renderProducts() {
+        const grid = document.getElementById("productsGrid");
 
+        if (state.products.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <p>No products yet.</p>
+                    <button class="btn btn-accent btn-sm" onclick="openProductModal()">Create your first product</button>
+                </div>`;
+            return;
+        }
+
+        grid.innerHTML = state.products.map(p => `
+            <div class="product-card">
+                <div class="product-img-placeholder">${escapeHtml(p.name.charAt(0).toUpperCase())}</div>
+                <div class="product-name">${escapeHtml(p.name)}</div>
+                ${p.description ? `<div class="product-desc">${escapeHtml(p.description)}</div>` : ""}
+                <div class="product-price">$${p.price.toFixed(2)}</div>
+                <div class="product-stock ${p.stock === 0 ? 'out' : ''}">${p.stock > 0 ? p.stock + ' in stock' : 'Out of stock'}</div>
+                <div class="product-actions">
+                <button class="btn btn-accent btn-sm" onclick="addToCart(${p.id})" ${p.stock === 0 ? 'disabled' : ''}>
+                    ${p.stock === 0 ? 'Sold Out' : 'Add to Cart'}
+                    </button>
+                    ${p.created_by === state.userId ? `
+                        <button class="btn btn-ghost btn-sm" onclick="openEditModal(${p.id})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${p.id})">×</button>
+                    ` : ''}
+                </div>
+            </div>
+        `).join("");
+    }
+
+    // ─── PRODUCT MODAL ────────────────────────────────────────
+    function openProductModal() {
+        state.editingProductId = null;
+        document.getElementById("modalTitle").textContent = "New Product";
+        document.getElementById("productSubmitBtn").textContent = "Create Product";
+        document.getElementById("productName").value = "";
+        document.getElementById("productDesc").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productStock").value = "";
+        document.getElementById("productModal").classList.remove("hidden");
+    }
+
+    function openEditModal(productId) {
+        const product = state.products.find(p => p.id === productId);
+        if (!product) return;
+
+        state.editingProductId = productId;
+        document.getElementById("modalTitle").textContent = "Edit Product";
+        document.getElementById("productSubmitBtn").textContent = "Save Changes";
+        document.getElementById("productName").value = product.name;
+        document.getElementById("productDesc").value = product.description || "";
+        document.getElementById("productPrice").value = product.price;
+        document.getElementById("productStock").value = product.stock;
+        document.getElementById("productModal").classList.remove("hidden");
+    }
+
+    function closeProductModal() {
+        document.getElementById("productModal").classList.remove("hidden");
+        document.getElementById("productModal").classList.add("hidden");
+    }
+
+    async function submitProduct() {
+        const name = document.getElementById("productName").value.trim();
+        const description = document.getElementById("productDesc").value.trim();
+        const price = parseFloat(document.getElementById("productPrice").value);
+        const stock = parseInt(document.getElementById("productStock").value);
+
+        if (!name) { showToast("Product name is required", "error"); return; }
+        if (isNaN(price) || price <= 0) { showToast("Valid price is required", "error"); return; }
+        if (isNaN(stock) || stock < 0) { showToast("Valid stock is required", "error"); return; }
+
+        const body = { name, description: description || null, price, stock };
+
+        try {
+            const btn = document.getElementById("productSubmitBtn");
+            btn.disabled = true;
+
+            if (state.editingProductId) {
+                await api(`/products/${state.editingProductId}`, "PUT", body);
+                showToast("Product updated", "success");
+            } else {
+                await api("/products", "POST", body);
+                showToast("Product created", "success");
+            }
+
+            closeProductModal();
+            await loadProducts();
+        } catch (err) {
+            showToast(err.message, "error");
+        } finally {
+            document.getElementById("productSubmitBtn").disabled = false;
+        }
+    }
+
+    async function deleteProduct(productId) {
+        if (!confirm("Delete this product?")) return;
+        try {
+            await api(`/products/${productId}`, "DELETE");
+            showToast("Product deleted", "success");
+            await loadProducts();
+        } catch (err) {
+            showToast(err.message, "error");
+        }
+    }
+
+    // Placeholder for Slice 3
+    function addToCart(productId) {
+        showToast("Cart coming in Slice 3", "success");
+    }
+
+    function toggleCart() {
+        showToast("Cart coming in Slice 3", "success");
+    }
+
+    // ─── PAGE SWITCHING ───────────────────────────────────────
     function showAuth() {
         document.getElementById("authPage").classList.remove("hidden");
         document.getElementById("appPage").classList.add("hidden");
@@ -637,59 +628,10 @@
         document.getElementById("navCart").classList.remove("hidden");
         document.getElementById("logoutBtn").classList.remove("hidden");
         document.getElementById("navUsername").textContent = state.username;
-
-        // Load products (will be implemented in Slice 2)
         loadProducts();
     }
 
-    async function loadProducts() {
-        try {
-            // This endpoint doesn't exist yet — will be built in Slice 2
-            // For now it will just show empty state
-            state.products = await api("/products");
-            renderProducts();
-        } catch (err) {
-            // Expected to fail until Slice 2 is built
-            console.log("Products endpoint not available yet");
-        }
-    }
-
-    function renderProducts() {
-        const grid = document.getElementById("productsGrid");
-
-        if (state.products.length === 0) {
-            grid.innerHTML = '<div class="empty-state"><p>No products yet. Check back soon.</p></div>';
-            return;
-        }
-
-        grid.innerHTML = state.products.map(product => `
-            <div class="product-card">
-                <div class="product-img-placeholder">
-                    ${product.name ? product.name.charAt(0).toUpperCase() : "?"}
-                </div>
-                <div class="product-name">${escapeHtml(product.name)}</div>
-                <div class="product-price">$${product.price.toFixed(2)}</div>
-                <div class="product-stock">${product.stock} in stock</div>
-                <button class="btn btn-accent btn-sm" onclick="addToCart(${product.id})"
-                    ${product.stock === 0 ? "disabled" : ""}>
-                    ${product.stock === 0 ? "Out of Stock" : "Add to Cart"}
-                </button>
-            </div>
-        `).join("");
-    }
-
-    // Placeholder for Slice 3
-    function addToCart(productId) {
-        showToast("Cart feature coming in Slice 3", "success");
-    }
-
-    function toggleCart() {
-        showToast("Cart feature coming in Slice 3", "success");
-    }
-
-
-    // ─── 6. UTILITIES ────────────────────────────────────────
-
+    // ─── UTILITIES ────────────────────────────────────────────
     function showToast(message, type = "error") {
         const container = document.getElementById("toastContainer");
         const toast = document.createElement("div");
@@ -705,13 +647,8 @@
         return div.innerHTML;
     }
 
-
     // ─── INIT ─────────────────────────────────────────────────
-    if (state.token) {
-        showApp();
-    } else {
-        showAuth();
-    }
+    if (state.token) { showApp(); } else { showAuth(); }
     </script>
 </body>
 </html>
