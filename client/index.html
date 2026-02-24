@@ -355,6 +355,13 @@
                 <div class="empty-state"><p>No products yet.</p></div>
             </div>
 
+            <div class="page-header" style="margin-top:2.5rem;">
+                <h2>Your Orders</h2>
+            </div>
+            <div id="ordersContainer">
+                <div class="empty-state"><p>No orders yet</p></div>
+            </div>
+
         </div>
     </div>
 
@@ -424,6 +431,7 @@
         products: [],
         editingProductId: null,
         cart: null,
+        orders: [],
     };
 
     // ─── API LAYER ────────────────────────────────────────────
@@ -734,8 +742,62 @@
         }
     }
 
-    function checkout() {
-        showToast("Checkout coming in Slice 4", "success");
+    // Find and replace:
+function checkout() {
+    showToast("Checkout coming in Slice 4", "success");
+}
+
+    // Replace with:
+    async function checkout() {
+        try {
+            const result = await api("/checkout/", "POST");
+            state.cart = null;
+            updateCartBadge();
+            renderCart();
+            closeCart();
+            showToast(`Order #${result.order_id} placed! ${result.message}`, "success");
+            loadOrders();
+        } catch (err) {
+            showToast(err.message, "error");
+        }
+    }
+
+    async function loadOrders() {
+        try {
+            state.orders = await api("/checkout/orders");
+            renderOrders();
+        } catch (err) {
+            console.log("Orders not loaded:", err);
+        }
+    }
+
+    function renderOrders() {
+        const container = document.getElementById("ordersContainer");
+        if (!container) return;
+
+        if (!state.orders || state.orders.length === 0) {
+            container.innerHTML = '<div class="empty-state"><p>No orders yet</p></div>';
+            return;
+        }
+
+        container.innerHTML = state.orders.map(order => `
+            <div class="product-card" style="padding:1rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <span style="font-weight:600; font-size:0.9rem;">Order #${order.id}</span>
+                    <span class="btn-sm" style="background:${order.status === 'paid' ? 'rgba(90,138,106,0.1)' : 'rgba(196,93,62,0.1)'}; color:${order.status === 'paid' ? 'var(--success)' : 'var(--error)'}; border-radius:100px; padding:0.2rem 0.6rem; font-size:0.7rem; font-weight:600; text-transform:uppercase;">${order.status}</span>
+                </div>
+                ${order.items.map(item => `
+                    <div style="display:flex; justify-content:space-between; font-size:0.82rem; padding:0.25rem 0; color:var(--text-secondary);">
+                        <span>${escapeHtml(item.product_name)} × ${item.quantity}</span>
+                        <span>$${item.subtotal.toFixed(2)}</span>
+                    </div>
+                `).join("")}
+                <div style="display:flex; justify-content:space-between; border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.5rem; font-size:0.9rem; font-weight:600;">
+                    <span>Total</span>
+                    <span>$${order.total_price.toFixed(2)}</span>
+                </div>
+            </div>
+        `).join("");
     }
     // ─── PAGE SWITCHING ───────────────────────────────────────
     function showAuth() {
@@ -755,6 +817,7 @@
         document.getElementById("navUsername").textContent = state.username;
         loadProducts();
         loadCart();
+        loadOrders();
     }
 
     // ─── UTILITIES ────────────────────────────────────────────

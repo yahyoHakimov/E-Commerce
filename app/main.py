@@ -7,6 +7,8 @@ from app.modules.cart.router import router as cart_router
 from app.modules.auth.models import User
 from app.modules.products.models import Product
 from app.modules.cart.models import Cart, CartItem
+from app.modules.payments.router import router as payments_router
+from app.modules.payments.models import Order, OrderItem
 
 app = FastAPI(title="E-Commerce API")
 
@@ -15,6 +17,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(auth_router)
 app.include_router(product_router)
 app.include_router(cart_router)
+app.include_router(payments_router)
 
 
 @app.get("/", response_class=HTMLResponse)
